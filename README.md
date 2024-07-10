@@ -1,3 +1,6 @@
+
+<img src="https://github.com/splatert/lblbrowser/assets/82643571/ab4ea7a8-5307-48f6-877d-e07b0e443196" height="75">
+
 # lblbrowser
 PHP application to browse music labels on Spotify
 
