@@ -3,10 +3,22 @@ PHP application to browse music labels on Spotify
 
 
 LblBrowser is a free PHP application that lets you browse through digital music labels that are distributed by Spotify without the need to use the Spotify web player. It can be hosted on a server or be ran locally on your computer.
-In order to use this application, you'll need to provide a Spotify ``client ID`` and ``secret``. You can obtain these credentials by starting a new project through the [Spotify developer dashboard](https://developer.spotify.com/dashboard).
-After receiving those credentials, follow the instructions below.
+
+
+## features
+
+- You're not using the Spotify web player for one.
+- Simple, neat interface. Does not use any web frameworks.
+- Keep track of where you're at on the search results page. Especially when browsing big labels.
+- Quickly add filters with convenience.
+- Download artwork of your favorite singles and albums.
+- Easily Select and copy items from the tracklist.
+
 
 ## Setup
+
+In order to use this application, you'll need to provide a Spotify ``client ID`` and ``secret``. You can obtain these credentials by starting a new project through the [Spotify developer dashboard](https://developer.spotify.com/dashboard).
+After receiving those credentials, follow the instructions below.
 
 1. Create a PHP file one level above the application's root directory. Give either ``root`` or ``www-data`` access to this file and make them file owners. Do not allow users to access it in any way. Call it ``lblbrowser-creds.php``.
 2. Add the following to the file. Replace the values with your credentials.
