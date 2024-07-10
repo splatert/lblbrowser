@@ -1,0 +1,420 @@
+html {
+    font-size: 12px;
+    background: linear-gradient(45deg, #101214 25%, #1c1c1c 25%, #1c1c1c 50%, #101214 50%, #101214 75%, #1c1c1c 75%, #1c1c1c 100%);
+    background-size: 40.00px 40.00px;
+}
+
+body {
+    margin: auto;
+    max-width: 75%;
+}
+
+
+
+.search-history {
+    position: fixed;
+    background: white;
+    border: 1px solid;
+    width: 178px;
+}
+
+
+.search-history > p {
+    margin: unset;
+    font-weight: bold;
+}
+.search-history > a, .search-history > p {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+
+
+.tracklist {
+    font-size: 12px;
+    padding: 5px;
+    background-color: #3a3a3a;
+    color: white;
+    margin-top: 15px;
+}
+
+.tracklist > tbody > tr > td, .tracklist > tbody > tr > th {
+    padding-right: 25px;
+    padding-left: 15px;
+}
+
+.tracklist > tbody > tr > td:nth-child(3) {
+    text-align: center;
+}
+
+
+
+.play-btn {
+    line-height: unset !important;
+    margin-left: 15px;
+}
+
+
+
+.tracklist > tbody > tr > td {
+    background: linear-gradient(#7b7b7b,#585858);
+}
+
+
+
+.tracklist > tbody > tr > th {
+    background-image: url('img/ui/material.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    box-shadow: 0px 1px 3px #00000050;
+
+}
+
+
+
+#curr-page {
+    font-weight: bold;
+}
+
+
+.music-result-item, .music-details {
+    display: flex;
+    margin-top: 15px;
+}
+
+.music-result-item > .right-side, .music-details > .right-side {
+    margin-left: 25px;
+}
+
+.music-details > .left-side {
+    margin-left: 8.5px;
+}
+
+
+.album-title {
+    margin: unset;
+}
+
+
+.album-year {
+    color: gray;
+}
+
+
+.artist-name {
+    display: block;
+}
+
+
+.album-bg {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.album-links {
+    display: flex;
+    margin-top: 15px;
+}
+
+
+.explicit {
+    float: right;
+}
+
+
+.filterby-artist-list {
+    display: grid;
+}
+
+
+
+.copyrights {
+    display: grid;
+    margin-top: 15px;
+}
+
+
+.copyrights > a {
+    color: black;
+    text-decoration: none;
+}
+
+.copyrights > a:hover {
+    color: #15539e;
+    text-decoration: underline;
+}
+
+
+
+input[name="custom-artist-field"] {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 150px;
+}
+
+
+.btn1 {
+    background: linear-gradient(white, white, #d7d7d7, #bbb);
+    border: 1px solid;
+    border-radius: 3px;
+    color: black;
+}
+
+
+
+.link {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #15539e;
+}
+
+
+.featured-artist::before {
+    content: url('img/ui/user.png');
+    position: relative;
+    top: 2px;
+    margin-right: 5px;  
+}
+
+
+
+.noselect {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
+.screenshots-info > h4 {
+    margin-bottom: unset;
+}
+.screenshots-info > p {
+    margin-top: unset;
+}
+
+
+.screenshot {
+    height: 175px;
+    border: 1px solid;
+}
+
+.screenshot:hover {
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.250);
+}
+
+
+.dl-artwork {
+    text-align: center;
+    display: block;
+    margin-top: 5px;
+}
+
+
+.platform {
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: transparent;
+    width: 16px;
+}
+
+
+.album-links, .btn-container {
+    border: 1px solid #b1b1b1;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+.platforms-gap {
+    margin-left: 15px;
+    margin-right: 15px;
+    width: .1px;
+    border: 1px dashed rgb(177, 177, 177);
+}
+
+
+#view-on-qb {
+    background-image: url('img/platform/qobuz.png');
+}
+
+#view-on-7d {
+    background-image: url('img/platform/7d.png');
+}
+
+
+#view-on-bp {
+    background-image: url('img/platform/beatport.png');
+}
+
+
+#view-on-juno {
+    background-color: rgb(43, 43, 43);
+    background-image: url('img/platform/juno.png');
+}
+
+
+
+#view-on-deezer {
+    background-color: #196dd4;
+    background-image: url('img/platform/deezer.png');
+}
+
+
+#view-on-apple {
+    background-color: rgb(183, 42, 42);
+    background-image: url('img/platform/apple.png');
+}
+
+
+#view-on-spotify {
+    background-color: #8fc400;
+    background-image: url('img/platform/spotify.png');
+}
+
+
+
+.album-links > a {
+    border: 1px solid;
+    margin-right: 5px;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.results-area {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+
+.btn2 {
+    margin-right: 10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 25px;
+    height: 25px;
+    line-height: 2;
+    background: linear-gradient(whitesmoke,#ececec, #b7b7b7);
+    box-shadow: 0px 1px 2px #000000c2;
+    border: 1px solid #fff;
+    border-radius: 3px;
+}
+
+
+.about > p {
+    margin: unset;
+}
+
+
+.logo {
+    height: 75px;
+}
+
+
+.topbar > a {
+    text-decoration: none;
+}
+
+
+.page-ctrls {
+    display: flex;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.page-ctrls > a {
+    margin-right: 10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 25px;
+    height: 25px;
+    line-height: 2;
+}
+
+
+.page-content {
+    margin-left: 15px;
+}
+
+
+.logo-title {
+    color: white;
+}
+
+
+.logo-title::before {
+    content: '';
+    background-image: url('img/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 20px;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;  
+}
+
+
+
+.side-panel {
+    padding-left: 15px;
+    padding-right: 2%;
+    border-right: 1px solid gray;
+}
+
+
+.page {
+    background-color: white;
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+.topbar-search {
+    margin-left: 25px;
+}
+
+.topbar-search > form {
+    margin: unset;
+}
+
+.topbar-links {
+    margin-left: 50px;
+}
+
+.topbar-links > a {
+    text-decoration: none;
+    padding-right: 15px;
+    font-weight: bold;
+    color: lightgray
+}
+
+.topbar-links > a:hover {
+    color: white;
+}
+
+
+.topbar {
+    display: flex;
+    background: linear-gradient(#424242,#151515);
+    padding: 15px;
+    line-height: 1.75;
+}
+
+
+.album-fg {
+    height: 125px;
+    scale: 1.16;
+}
