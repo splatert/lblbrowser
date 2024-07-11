@@ -15,7 +15,8 @@ LblBrowser is a free PHP application that lets you browse through digital music 
 - Keep track of where you're at on the search results page. Especially when browsing big labels.
 - Quickly add filters with convenience.
 - Download artwork of your favorite singles and albums.
-- Easily Select and copy items from the tracklist.
+- Retrieve barcodes and identifers of album tracks.
+- Select and copy data from a tracklist without having to inspect their HTML elements.
 
 
 ## Setup
