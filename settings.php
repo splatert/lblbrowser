@@ -33,6 +33,12 @@
                         else {
                             setcookie('full_width', false, $one_year);
                         }
+                        if (isset($_POST['show-ids'])) {
+                            setcookie('show_ids', true, $one_year);
+                        }
+                        else {
+                            setcookie('show_ids', false, $one_year);
+                        }
 
                         echo 'Saved to configuration. Please <a href="javascript:window.location = \'settings.php\' ">refresh the page.</a>';
                     }
@@ -53,13 +59,24 @@
                 <h4>Settings</h4>
 
                 <form method="POST" action="settings.php">
-                
+
+                    <fieldset>
+                        <input type="submit" value="save">
+                    </fieldset>
+
                     <fieldset>
                         <legend>Interface</legend>
                         <label for="full-width">Full width page</label>
                         <input type="checkbox" name="full-width">
-                        <input type="submit" value="save">
                     </fieldset>
+
+
+                    <fieldset>
+                        <legend>Tracklist</legend>
+                        <label for="show-ids">Show track barcodes/identifiers</label>
+                        <input type="checkbox" name="show-ids">
+                    </fieldset>
+
 
                     <fieldset>
                         <legend>Custom client credentials (Will be used instead of ones set by server)</legend>
@@ -96,6 +113,9 @@
                     }
                     if (isset($_COOKIE['full_width'])) {
                         echo '<script>document.getElementsByName("full-width")[0].checked = true</script>';
+                    }
+                    if (isset($_COOKIE['show_ids']) && $_COOKIE['show_ids'] == true) {
+                        echo '<script>document.getElementsByName("show-ids")[0].checked = true</script>';
                     }
                 ?>
 

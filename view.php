@@ -24,7 +24,6 @@
         
             $response = curl_exec($curl);
             $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-            curl_close($curl);
         
         
             if ($httpcode != 200) {
@@ -32,6 +31,7 @@
                 if ($httpcode == 401) {
                     echo '<br>Your token may have expired. Please perform a refresh on the search results page to generate a new one.';
                 }
+                curl_close($curl);
             }
             else {
         
@@ -64,6 +64,11 @@
                         echo '<th>Artist</th>';
                         echo '<th>Track</th>';
                         echo '<th>Duration</th>';
+                        
+                        if (isset($_COOKIE['show_ids']) && $_COOKIE['show_ids'] == true) {
+                            echo '<th>Identifier</th>';
+                        }
+
                         echo '<th>Preview</th>';
                     echo '</tr>';
                     
@@ -71,6 +76,7 @@
                         
                         $duration = date("i:s", intval($track['duration_ms'] / 1000) );
                         $preview_url = $track['preview_url'];
+                        $track_id = $track['id'];
 
                         echo '<tr>';
                         
@@ -90,6 +96,46 @@
                             echo '<td>'.$track['name'].'</td>';
                             echo '<td>'.$duration.'</td>';
 
+
+                            if (isset($_COOKIE['show_ids']) && $_COOKIE['show_ids'] == true) {
+                                curl_setopt($curl, CURLOPT_URL, 'https://api.spotify.com/v1/tracks/'.$track_id);
+                                
+                                $track_data = curl_exec($curl);
+                                $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+                                curl_close($curl);
+                    
+                                if ($httpcode = 200) {
+                                    
+                                    $track_data = json_decode($track_data, true);
+    
+                                    $identifiers = $track_data['external_ids'];
+                                    $gotten = array();
+                                    
+                                    if (isset($identifiers['isrc'])) {
+                                        array_push($gotten, $identifiers['isrc']);
+                                    }
+                                    if (isset($identifiers['ean'])) {
+                                        array_push($gotten, $identifiers['ean']);
+                                    }
+                                    if (isset($identifiers['upc'])) {
+                                        array_push($gotten, $identifiers['upc']);
+                                    }
+    
+                                    if (count($gotten) == 0) {
+                                        echo '<td>none</td>';
+                                    }
+                                    else {
+                                        foreach ($gotten as $identifier) {
+                                            echo '<td>'.$identifier.'</td>';
+                                        }
+                                    }
+                                }
+                                else {
+                                    echo '<td>none</td>';
+                                }
+                            }
+                            
+
                             echo '<td style="padding-right: unset !important">';
                                 echo '<input class="play-btn btn2" onclick="preview(\''.$preview_url.'\', this)" type="button" value="▶">';
                             echo '</td>';
@@ -100,6 +146,8 @@
 
                 echo '</tbody>';
             echo '</table>';
+
+
 
             echo '<div class="copyrights">';
                 foreach ($copyrights as $copyright) {
