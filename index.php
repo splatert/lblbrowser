@@ -43,6 +43,7 @@
                 <li>Keep track of where you're at on the search results page. Especially when browsing big labels.</li>
                 <li>Quickly add filters with convenience.</li>
                 <li>Download artwork of your favorite singles and albums.</li>
+                <li>Retrieve barcodes and identifers of album tracks.</li>
                 <li>Easily Select and copy items from the tracklist.</li>
 
 
