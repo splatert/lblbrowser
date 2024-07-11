@@ -37,7 +37,7 @@
         </form>
     </div>
     <div class="topbar-links">
-        <a class="topbar-link">Project Link</a>
+        <a href="https://github.com/splatert/lblbrowser" class="topbar-link">Project Link</a>
         <a href="settings.php" class="topbar-link">Settings</a>
     </div>
 </div>
