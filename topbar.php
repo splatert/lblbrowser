@@ -5,7 +5,7 @@
 <div class="topbar">
     <a href="index.php"><div class="logo-title"><b>Lbl</b>Browser</div></a>
     <div class="topbar-search">
-        <form method="GET" action="search.php">
+        <form method="GET" action="search.php" class="topbar-search-container">
 
             <script>
                 function sh(btn) {
@@ -27,7 +27,10 @@
                 <p>Search History</p>
                 <?php
                     if (isset($_COOKIE['search-history'])) {
+                        
                         $past_searches = json_decode($_COOKIE['search-history']);
+                        $past_searches = array_reverse($past_searches);
+
                         foreach ($past_searches as $search) {
                             echo '<a onclick="window.location.href=\'search.php?q=\'+this.innerText;">'.$search.'</a>';
                         }
