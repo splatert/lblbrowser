@@ -44,7 +44,7 @@
                 <li>Quickly add filters with convenience.</li>
                 <li>Download artwork of your favorite singles and albums.</li>
                 <li>Retrieve barcodes and identifers of album tracks.</li>
-                <li>Easily Select and copy items from the tracklist.</li>
+                <li>Select and copy data from a tracklist without having to inspect their HTML elements.</li>
 
 
                 <div class="screenshots-info"> <h4>Screenshots</h4><p>(Click on them to view their full size.)</p></div>

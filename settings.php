@@ -56,13 +56,11 @@
 
                 ?>
 
-                <h4>Settings</h4>
-
                 <form method="POST" action="settings.php">
-
-                    <fieldset>
-                        <input type="submit" value="save">
-                    </fieldset>
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4>Settings</h4>
+                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
+                    </div>
 
                     <fieldset>
                         <legend>Interface</legend>
@@ -90,7 +88,7 @@
                         <label for="client-secret">Client Secret: </label>
                         <input id="c-secret" name="client-secret" type="password">
 
-                        <input type="submit" value="save">
+                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
 
                     </fieldset>
                 </form>
@@ -99,7 +97,7 @@
                     <fieldset>
                         <legend>Search History</legend>
                         <input type="hidden" name="clear-search-history" value="1">
-                        <input value="Clear search history" type="submit">
+                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="Clear search history">
                     </fieldset>
                 </form>
 

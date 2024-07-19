@@ -47,6 +47,7 @@
                 $album_type = $data['album_type'];
                 $tracks = $data['tracks']['items'];
                 $copyrights = $data['copyrights'];
+                $label = $data['label'];
                 $hd_art = $data['images'][0]['url'];
 
 
@@ -137,7 +138,9 @@
                             
 
                             echo '<td style="padding-right: unset !important">';
-                                echo '<input class="play-btn btn2" onclick="preview(\''.$preview_url.'\', this)" type="button" value="▶">';
+                                echo '<div class="play-btn btn2" onclick="preview(\''.$preview_url.'\', this)" >';;
+                                    echo '▶';
+                                echo '</div>';
                             echo '</td>';
                             
 
@@ -148,11 +151,15 @@
             echo '</table>';
 
 
-
             echo '<div class="copyrights">';
                 foreach ($copyrights as $copyright) {
                     echo '<a href="search.php?q='.$copyright['text'].'" >(' .$copyright['type']. ') ' .$copyright['text']. '</a>';
                 }
+
+                if (isset($label)) {
+                    echo '<a href="search.php?q='.$label.'">'.$label.'</a>';
+                }
+
             echo '</div>';
 
         
@@ -222,7 +229,7 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
         function preview(url, button) {
 
             if (current_play_button) {
-                current_play_button.value = '▶';
+                current_play_button.innerText = '▶';
                 current_play_button = button;
             }
             else {
@@ -231,7 +238,7 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
 
             if (playing) {
                 playing = false;
-                current_play_button.value = '▶';
+                current_play_button.innerText = '▶';
 
                 if (audio) {
                     audio.pause();
@@ -242,7 +249,7 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
             else {
 
                 if (audio) {
-                    current_play_button.value = '◼';
+                    current_play_button.innerText = '◼';
                     audio.pause();
                     audio.currentTime = 0;
                 }
@@ -254,11 +261,17 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
                 audio.src = url;
                 audio.play();
 
-                current_play_button.value = '◼';
+                current_play_button.innerText = '◼';
+
+
+                audio.onplaying = function() {
+
+                }
+
 
                 audio.onended = function() {
                     playing = false;
-                    current_play_button.value = '▶';
+                    current_play_button.innerText = '▶';
                 }
 
             }

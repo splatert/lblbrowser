@@ -11,11 +11,31 @@ body {
 
 
 
+.topbar-search-container {
+    background: white;
+    border-radius: 5px;
+    max-height: 25px;
+}
+
+
+.topbar-search-container > input {
+    padding-left: 5px;
+    background: unset;
+    border: unset;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+
 .search-history {
     position: fixed;
     background: white;
     border: 1px solid;
-    width: 178px;
+    width: 200px;
+    max-height: 250px;
+    overflow: auto;
+    z-index: 3;
 }
 
 
@@ -29,6 +49,12 @@ body {
     text-decoration: none;
     padding-left: 5px;
     cursor: pointer;
+}
+
+
+.search-history > a:hover {
+    background: linear-gradient(gray,#262626);
+    color: white;
 }
 
 
@@ -53,9 +79,19 @@ body {
 
 
 .play-btn {
-    line-height: unset !important;
+    cursor: pointer;
     margin-left: 15px;
 }
+
+
+.play-btn > .progress {
+    width: 0%;
+    height: 100%;
+    background: #ffcb0091;
+    display: inline-block;
+    position: relative;
+}
+
 
 
 
@@ -128,6 +164,10 @@ body {
 
 .filterby-artist-list {
     display: grid;
+    border: 1px outset #dedede;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px #00000050;
 }
 
 
@@ -150,6 +190,11 @@ body {
 
 
 
+input[name="year"] {
+    width: 75px;
+}
+
+
 input[name="custom-artist-field"] {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -158,10 +203,17 @@ input[name="custom-artist-field"] {
 
 
 .btn1 {
-    background: linear-gradient(white, white, #d7d7d7, #bbb);
+    background: linear-gradient(white, #c6c6c6);
     border: 1px solid;
+      border-top-color: currentcolor;
+      border-right-color: currentcolor;
+      border-bottom-color: currentcolor;
+      border-left-color: currentcolor;
     border-radius: 3px;
     color: black;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px #000000d9;
+    border-color: #d5d5d5;
 }
 
 
@@ -280,7 +332,6 @@ input[name="custom-artist-field"] {
 
 
 .album-links > a {
-    border: 1px solid;
     margin-right: 5px;
     padding: 5px;
     display: block;
@@ -306,9 +357,34 @@ input[name="custom-artist-field"] {
     line-height: 2;
     background: linear-gradient(whitesmoke,#ececec, #b7b7b7);
     box-shadow: 0px 1px 2px #000000c2;
-    border: 1px solid #fff;
+    border: 1px solid #d7d7d7;
     border-radius: 3px;
 }
+
+
+.btn2:hover {
+    background: linear-gradient(rgb(255, 255, 255), rgb(204,228,255), rgb(116,198,255));
+    border-color: rgb(116,180,255);
+    box-shadow: 0px 0px 0px 1px rgb(33, 96, 178);
+}
+
+
+.btn2-hl {
+    margin-right: 10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 25px;
+    height: 25px;
+    line-height: 2;
+    background: linear-gradient(#fff,#51beff, #0067d5);
+    box-shadow: 0px 1px 2px #000000c2;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: white;
+}
+
 
 
 .about > p {

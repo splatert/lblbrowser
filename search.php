@@ -238,6 +238,7 @@
                                 echo '<span class="album-year">('.$year.')</h4>';
                             echo '</div>';
                         echo '<span>'.$media_type.'</span>';
+
                     echo '</div>';
 
                     echo '<div class="album-links">';
@@ -412,6 +413,7 @@
 
             
             $albums = $searchResults['albums']['items'];
+
             foreach ($albums as $album) {
 
                 $album_art = $album['images'][0]['url'];
@@ -420,6 +422,7 @@
                 $release_title = $album['name'];
                 $year = $album['release_date'];
                 $album_type = $album['album_type'];
+
 
                 $album_item = array(
                     'artist' => $artist_name,
