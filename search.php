@@ -28,7 +28,7 @@
     }
 
 
-    $one_year = time() + ( 365 * 24 * 60 * 60);
+    $one_year = time() + (365 * 24 * 60 * 60);
 
 
     if (!isset($_COOKIE['search-history'])) {
@@ -36,13 +36,15 @@
         setcookie('search-history', json_encode($array), $one_year);
     }
     if (isset($_COOKIE['search-history']) && isset($_GET['q'])) {
-        $items = json_decode($_COOKIE['search-history']);
+        
+        if (isset($_COOKIE['save_search_results']) && $_COOKIE['save_search_results'] == true) {
+            $items = json_decode($_COOKIE['search-history']);
 
-        if (!in_array($_GET['q'], $items)) {
-            array_push($items, $_GET['q']);
+            if (!in_array($_GET['q'], $items)) {
+                array_push($items, $_GET['q']);
+            }
+            setcookie('search-history', json_encode($items), $one_year);
         }
-
-        setcookie('search-history', json_encode($items), $one_year);
 
     }
 
@@ -244,15 +246,18 @@
                     echo '<div class="album-links">';
                         echo '<a class="btn1" href="view.php?id='.$spotify_id.'&token='.$token.'" >Details</a>';
                         echo '<div class="platforms-gap"></div>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-spotify" href="https://open.spotify.com/album/'.$spotify_id.'">Spotify</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-apple" href="https://music.apple.com/us/search?term='.$artist.' - '.$title.'">Apple</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-deezer" href="https://deezer.com/search/'.$artist.' - '.$title.'">Deezer</a>';
-                        echo '<div class="platforms-gap"></div>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-7d" href="https://us.7digital.com/search?q='.$artist.' - '.$title.'">7digital</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-bp" href="https://crates.co/search?q='.$artist.' - '.$title.'">Beatport</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-qb" href="https://qobuz.com/us-en/search?q='.$artist.' - '.$title.'">Qobuz</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-juno" href="https://www.junodownload.com/search/?q%5Ball%5D%5B%5D='.$artist.' - '.$title.'">Juno</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-spotify" href="https://open.spotify.com/album/'.$spotify_id.'" title="View on Spotify" >Spotify</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-apple" href="https://music.apple.com/us/search?term='.$artist.' - '.$title.'" title="Search on Apple Music" >Apple</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-deezer" href="https://deezer.com/search/'.$artist.' - '.$title.'" title="Search on Deezer" >Deezer</a>';
+                            echo '<div class="platforms-gap"></div>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-7d" href="https://us.7digital.com/search?q='.$artist.' - '.$title.'" title="Search on 7Digital" >7digital</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-bp" href="https://crates.co/search?q='.$artist.' - '.$title.'" title="Search on Beatport" >Beatport</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-qb" href="https://qobuz.com/us-en/search?q='.$artist.' - '.$title.'" title="Search on Qobuz" >Qobuz</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-juno" href="https://www.junodownload.com/search/?q%5Ball%5D%5B%5D='.$artist.' - '.$title.'" title="Search on JunoDownload" >Juno</a>';
+                            echo '<div class="platforms-gap"></div>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-dc" href="https://discogs.com/search?q='.$artist.' - '.$title.'" title="Search on Discogs" >Discogs</a>';
                     echo '</div>';
+                    
                 echo '</div>';
             echo '</div>';
         }

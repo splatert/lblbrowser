@@ -207,6 +207,8 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
                     echo '<a class="btn1 platform" target="_blank" id="view-on-bp" href="https://crates.co/search?q='.$artist.' - '.$title.'">Beatport</a>';
                     echo '<a class="btn1 platform" target="_blank" id="view-on-qb" href="https://qobuz.com/us-en/search?q='.$artist.' - '.$title.'">Qobuz</a>';
                     echo '<a class="btn1 platform" target="_blank" id="view-on-juno" href="https://www.junodownload.com/search/?q%5Ball%5D%5B%5D='.$artist.' - '.$title.'">Juno</a>';
+                        echo '<div class="platforms-gap"></div>';
+                    echo '<a class="btn1 platform" target="_blank" id="view-on-dc" href="https://discogs.com/search?q='.$artist.' - '.$title.'" title="Search on Discogs" >Discogs</a>';
                 echo '</div>';
             echo '</div>';
 

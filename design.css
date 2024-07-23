@@ -295,6 +295,12 @@ input[name="custom-artist-field"] {
     background-image: url('img/platform/qobuz.png');
 }
 
+
+#view-on-dc {
+    background-image: url('img/platform/discogs.png');
+}
+
+
 #view-on-7d {
     background-image: url('img/platform/7d.png');
 }
