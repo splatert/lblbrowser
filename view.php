@@ -59,97 +59,107 @@
                 echo '</div>';
 
 
-                echo '<table class="tracklist">';
-                echo '<tbody>';
-                    echo '<tr>';
-                        echo '<th>Artist</th>';
-                        echo '<th>Track</th>';
-                        echo '<th>Duration</th>';
-                        
-                        if (isset($_COOKIE['show_ids']) && $_COOKIE['show_ids'] == true) {
-                            echo '<th>Identifier</th>';
-                        }
+                echo '<fieldset class="tracklist-container">';
+                    echo '<legend>Tracklist</legend>';
 
-                        echo '<th>Preview</th>';
-                    echo '</tr>';
-                    
-                    foreach ($tracks as $track) {
-                        
-                        $duration = date("i:s", intval($track['duration_ms'] / 1000) );
-                        $preview_url = $track['preview_url'];
-                        $track_id = $track['id'];
-
-                        echo '<tr>';
-                        
-                            echo '<td>';
-                                $track_artists = $track['artists'];
-                                $amount = 0;
-
-                                foreach ($track_artists as $track_artist) {
-                                    if ($amount >= 1) {
-                                        echo ', ';
-                                    }
-                                    echo $track_artist['name'];
-                                    $amount++;
-                                }
-                            echo '</td>';
-
-                            echo '<td>'.$track['name'].'</td>';
-                            echo '<td>'.$duration.'</td>';
-
-
-                            if (isset($_COOKIE['show_ids']) && $_COOKIE['show_ids'] == true) {
-                                curl_setopt($curl, CURLOPT_URL, 'https://api.spotify.com/v1/tracks/'.$track_id);
-                                
-                                $track_data = curl_exec($curl);
-                                $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-                                curl_close($curl);
-                    
-                                if ($httpcode = 200) {
-                                    
-                                    $track_data = json_decode($track_data, true);
-    
-                                    $identifiers = $track_data['external_ids'];
-                                    $gotten = array();
-                                    
-                                    if (isset($identifiers['isrc'])) {
-                                        array_push($gotten, $identifiers['isrc']);
-                                    }
-                                    if (isset($identifiers['ean'])) {
-                                        array_push($gotten, $identifiers['ean']);
-                                    }
-                                    if (isset($identifiers['upc'])) {
-                                        array_push($gotten, $identifiers['upc']);
-                                    }
-    
-                                    if (count($gotten) == 0) {
-                                        echo '<td>none</td>';
-                                    }
-                                    else {
-                                        foreach ($gotten as $identifier) {
-                                            echo '<td>'.$identifier.'</td>';
-                                        }
-                                    }
-                                }
-                                else {
-                                    echo '<td>none</td>';
-                                }
-                            }
-                            
-
-                            echo '<td style="padding-right: unset !important">';
-                                echo '<div class="play-btn btn2" onclick="preview(\''.$preview_url.'\', this)" >';;
-                                    echo '▶';
-                                echo '</div>';
-                            echo '</td>';
-                            
-
-                        echo '</tr>';
+                    if (isset($_COOKIE['discogs_tools']) && $_COOKIE['discogs_tools'] == true) {
+                        echo '<div class="discogs-tools">';
+                            echo '<button onclick="dashes_to_parantheses(this)" >Dashes → paranthases</button>';
+                            echo '<button onclick="copy_mode(this)" >Copy mode<span class="what" title="Copy tracklist fields by clicking on them.">?</span></button>';
+                        echo '</div>';
                     }
 
-                echo '</tbody>';
-            echo '</table>';
+                    echo '<table class="tracklist">';
+                    echo '<tbody>';
+                        echo '<tr>';
+                            echo '<th>Artist</th>';
+                            echo '<th>Track</th>';
+                            echo '<th>Duration</th>';
+                            
+                            if (isset($_COOKIE['show_ids']) && $_COOKIE['show_ids'] == true) {
+                                echo '<th>Identifier</th>';
+                            }
 
+                            echo '<th>Preview</th>';
+                        echo '</tr>';
+                        
+                        foreach ($tracks as $track) {
+                            
+                            $duration = date("i:s", intval($track['duration_ms'] / 1000) );
+                            $preview_url = $track['preview_url'];
+                            $track_id = $track['id'];
+
+                            echo '<tr>';
+                            
+                                echo '<td class="track-artists copyable">';
+                                    $track_artists = $track['artists'];
+                                    $amount = 0;
+
+                                    foreach ($track_artists as $track_artist) {
+                                        if ($amount >= 1) {
+                                            echo ', ';
+                                        }
+                                        echo $track_artist['name'];
+                                        $amount++;
+                                    }
+                                echo '</td>';
+
+                                echo '<td class="track-title copyable">'.$track['name'].'</td>';
+                                echo '<td class="track-duration copyable">'.$duration.'</td>';
+
+
+                                if (isset($_COOKIE['show_ids']) && $_COOKIE['show_ids'] == true) {
+                                    curl_setopt($curl, CURLOPT_URL, 'https://api.spotify.com/v1/tracks/'.$track_id);
+                                    
+                                    $track_data = curl_exec($curl);
+                                    $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+                                    curl_close($curl);
+                        
+                                    if ($httpcode = 200) {
+                                        
+                                        $track_data = json_decode($track_data, true);
+        
+                                        $identifiers = $track_data['external_ids'];
+                                        $gotten = array();
+                                        
+                                        if (isset($identifiers['isrc'])) {
+                                            array_push($gotten, $identifiers['isrc']);
+                                        }
+                                        if (isset($identifiers['ean'])) {
+                                            array_push($gotten, $identifiers['ean']);
+                                        }
+                                        if (isset($identifiers['upc'])) {
+                                            array_push($gotten, $identifiers['upc']);
+                                        }
+        
+                                        if (count($gotten) == 0) {
+                                            echo '<td class="track-id copyable">none</td>';
+                                        }
+                                        else {
+                                            foreach ($gotten as $identifier) {
+                                                echo '<td class="track-id copyable">'.$identifier.'</td>';
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        echo '<td class="track-id copyable">none</td>';
+                                    }
+                                }
+                                
+
+                                echo '<td style="padding-right: unset !important">';
+                                    echo '<div class="play-btn btn2" onclick="preview(\''.$preview_url.'\', this)" >';;
+                                        echo '▶';
+                                    echo '</div>';
+                                echo '</td>';
+                                
+
+                            echo '</tr>';
+                        }
+
+                    echo '</tbody>';
+                echo '</table>';
+            echo '</fieldset>';
 
             echo '<div class="copyrights">';
                 foreach ($copyrights as $copyright) {
@@ -223,6 +233,91 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
 
 <html>
 
+
+
+    <script>
+        var copyMode = false;
+
+        function copy_mode(button) {
+            if (!copyMode) {
+                copyMode = true;
+                button.innerText = 'Copy mode [ON]';
+            }
+            else {
+                copyMode = false;
+                button.innerHTML = 'Copy mode<span class="what" title="Copy tracklist fields by clicking on them.">?</span>';
+            }
+        }
+
+        setTimeout(() => {
+            var items = document.getElementsByClassName('copyable');
+            for (var i=0; i<items.length; i++) {
+                items[i].style.cursor = 'pointer';
+                
+                items[i].onclick = function() {
+                    if (copyMode) {
+
+                        navigator.clipboard.writeText(this.innerText);
+
+                        this.style.color = 'limegreen';
+                        setTimeout(() => {
+                            this.style.color = 'white';
+                        }, 250);
+                    }
+                }
+            }
+        }, 2500);
+
+    </script>
+
+
+
+
+    <script>
+        var paranthesis_set = false;
+
+        function dashes_to_parantheses(button) {
+            var trackTitles = document.getElementsByClassName('track-title');
+            if (!paranthesis_set) {
+                    
+                    paranthesis_set = true
+                    button.innerText = 'Dashes ← Parantheses';
+
+                    for (var i=0; i<trackTitles.length; i++) {
+                        var title = trackTitles[i].innerText;
+                        var split = title.split(' - ');
+
+                        if (split[0] && split[1]) {
+                            var newTitle = split[0] + ' (' + split[1] + ')';
+                            trackTitles[i].innerText = newTitle;
+                        }
+                    }
+                    
+            }
+            else {
+
+                for (var i=0; i<trackTitles.length; i++) {
+                    var title = trackTitles[i].innerText;
+                    var split = title.split(' (');
+
+                    if (split[0] && split[1]) {
+                        var newTitle = split[0] + ' - ' + split[1];
+                        newTitle = newTitle.substring(0, newTitle.length - 1);
+
+                        trackTitles[i].innerText = newTitle;
+                    }
+                }
+
+                paranthesis_set = false;
+                button.innerText = 'Dashes → Parantheses';
+
+            }
+        }
+
+    </script>
+
+
+
     <script>
         var audio = null;
         var playing = false;
@@ -290,7 +385,6 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
 
         <div class="page">
             <section class="page-content">
-
                 <?php
                     display_album_info();
                 ?>

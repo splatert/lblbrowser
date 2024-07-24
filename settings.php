@@ -64,6 +64,19 @@
                     }
 
 
+
+                    if (isset($_POST['action']) && $_POST['action'] == 'save-discogs-tools') {
+                        if (isset($_POST['discogs-tools'])) {
+                            setcookie('discogs_tools', true, $one_year); 
+                        }
+                        else {
+                            setcookie('discogs_tools', false, $one_year); 
+                        }
+                        echo 'Settings were saved. Please <a href="javascript:window.location = \'settings.php\' ">refresh the page.</a>';
+                    }
+
+
+
                     if (isset($_POST['clear-search-history']) && $_POST['clear-search-history'] == 1) {
                         setcookie('search-history', '', time() - 3600, '/');
                         echo 'Cleared search history.';
@@ -87,16 +100,24 @@
                     </fieldset>
                 </form>
 
+                <fieldset>
+                    <legend>Tracklist</legend>
+                    <form method="POST" action="settings.php">
+                        <input name="action" type="hidden" value="save-id-display">
+                        <label for="show-ids">Show track barcodes/identifiers</label>
+                        <input type="checkbox" name="show-ids">
+                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
+                    </form>
 
-                <form method="POST" action="settings.php">
-                    <input name="action" type="hidden" value="save-id-display">
-                    <fieldset>
-                            <legend>Tracklist</legend>
-                            <label for="show-ids">Show track barcodes/identifiers</label>
-                            <input type="checkbox" name="show-ids">
-                            <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
-                        </fieldset>
-                </form>
+                    <form method="POST" action="settings.php">
+                        <input name="action" type="hidden" value="save-discogs-tools">
+                        <label for="show-ids">Tools for Discogs</label>
+                        <input type="checkbox" name="discogs-tools">
+                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
+                    </form>
+                    
+                </fieldset>
+
 
                 <form method="POST" action="settings.php">
                 <input name="action" type="hidden" value="save-creds">
@@ -146,6 +167,9 @@
                     }
                     if (isset($_COOKIE['save_search_results']) && $_COOKIE['save_search_results'] == true) {
                         echo '<script>document.getElementsByName("save-search-results")[0].checked = true</script>';
+                    }
+                    if (isset($_COOKIE['discogs_tools']) && $_COOKIE['discogs_tools'] == true) {
+                        echo '<script>document.getElementsByName("discogs-tools")[0].checked = true</script>';
                     }
                 ?>
 

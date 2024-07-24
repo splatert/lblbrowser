@@ -52,9 +52,37 @@ body {
 }
 
 
+.what {
+    background: linear-gradient(gray,#3a3a3a);
+    margin-left: 5px;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 100%;
+    font-weight: bold;
+}
+
+
 .search-history > a:hover {
     background: linear-gradient(gray,#262626);
     color: white;
+}
+
+
+.discogs-tools {
+    margin-bottom: 5px;
+}
+
+.discogs-tools > button {
+    margin-right: 5px;
+    border: 1px solid gray;
+    box-shadow: 1px 1px 0px gray;
+}
+
+
+.copyable::after {
+    content: '✓';
+    display: none;
 }
 
 
@@ -64,8 +92,26 @@ body {
     padding: 5px;
     background-color: #3a3a3a;
     color: white;
-    margin-top: 15px;
 }
+
+
+.tracklist-container {
+    margin-top: 15px;
+    background: linear-gradient(#f0f0f0,white);
+    border: unset;
+    border-top: 5px solid #767676;
+}
+
+
+.tracklist-container > legend {
+    background: #767676;
+    color: white;
+    padding-right: 75px;
+    border-top-right-radius: 25px;
+    position: relative;
+    bottom: 5px;
+}
+
 
 .tracklist > tbody > tr > td, .tracklist > tbody > tr > th {
     padding-right: 25px;
