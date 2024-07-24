@@ -38,6 +38,6 @@ After receiving those credentials, follow the instructions below.
 
 
 ## screenshots
+<img src="https://github.com/user-attachments/assets/c095f0ac-4dbe-4a77-9e88-7144dddd339b" height="325">
+<img src="https://github.com/user-attachments/assets/2e433801-21e3-474e-b4c0-6cf7c2d30af3" height="325">
 
-<img src="https://github.com/splatert/lblbrowser/assets/82643571/c7f3f75e-0fd9-43f9-81a9-e384b763e95f" height="350">
-<img src="https://github.com/splatert/lblbrowser/assets/82643571/dc07510f-fbab-411f-a642-b8416ebd54f8" height="350">
