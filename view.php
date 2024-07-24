@@ -252,7 +252,7 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
         setTimeout(() => {
             var items = document.getElementsByClassName('copyable');
             for (var i=0; i<items.length; i++) {
-                items[i].style.cursor = 'pointer';
+                items[i].style.cursor = 'copy';
                 
                 items[i].onclick = function() {
                     if (copyMode) {
