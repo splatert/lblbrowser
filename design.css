@@ -11,10 +11,21 @@ body {
 
 
 
+.topbar-logo {
+    position: relative;
+    top: 5px;
+}
+
+
+
 .topbar-search-container {
     background: white;
-    border-radius: 5px;
     max-height: 25px;
+}
+
+
+.topbar-links > a {
+    line-height: 2.5;
 }
 
 
@@ -95,9 +106,9 @@ body {
 }
 
 
-.tracklist-container {
+.tracklist-container, .sidepanel-form-container {
     margin-top: 15px;
-    background: linear-gradient(#f0f0f0,white);
+    background: linear-gradient(#f2f2f2,white);
     border: unset;
     border-top: 5px solid #767676;
 }
@@ -110,6 +121,14 @@ body {
     border-top-right-radius: 25px;
     position: relative;
     bottom: 5px;
+}
+
+.sidepanel-cat-title {
+    position: relative;
+    top: 15px;
+    left: 2px;
+    font-weight: bold;
+    color: #4b4b4b;
 }
 
 
@@ -210,10 +229,11 @@ body {
 
 .filterby-artist-list {
     display: grid;
-    border: 1px outset #dedede;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0px 1px 2px #00000050;
+}
+
+
+.filterby-artist-list > a:nth-child(2n+1) {
+    background: linear-gradient(90deg,#4242421a,#fff0);
 }
 
 
@@ -224,12 +244,18 @@ body {
 }
 
 
+.label {
+    color: rgb(130, 130, 130);
+    text-decoration: none;
+}
+
+
 .copyrights > a {
     color: black;
     text-decoration: none;
 }
 
-.copyrights > a:hover {
+.copyrights > a:hover, .label:hover {
     color: #15539e;
     text-decoration: underline;
 }
@@ -267,9 +293,13 @@ input[name="custom-artist-field"] {
 .link {
     cursor: pointer;
     text-decoration: underline;
-    color: #15539e;
+    color: black;
 }
 
+
+.featured-artist {
+    max-width: 175px;
+}
 
 .featured-artist::before {
     content: url('img/ui/user.png');
@@ -497,7 +527,7 @@ input[name="custom-artist-field"] {
 
 .side-panel {
     padding-left: 15px;
-    padding-right: 2%;
+    padding-right: 1%;
     border-right: 1px solid gray;
 }
 
@@ -516,6 +546,7 @@ input[name="custom-artist-field"] {
 
 .topbar-search > form {
     margin: unset;
+    padding: 5px;
 }
 
 .topbar-links {
@@ -537,7 +568,7 @@ input[name="custom-artist-field"] {
 .topbar {
     display: flex;
     background: linear-gradient(#424242,#151515);
-    padding: 15px;
+    padding: 10px;
     line-height: 1.75;
 }
 

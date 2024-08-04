@@ -55,7 +55,7 @@
 
 
                 echo '<div class="music-container">';
-                    display_album($artist_name, $release_title, $album_art, $year, $album_type, $spotify_id, $hd_art);
+                    display_album($artist_name, $release_title, $album_art, $year, $album_type, $spotify_id, $hd_art, $label);
                 echo '</div>';
 
 
@@ -165,11 +165,6 @@
                 foreach ($copyrights as $copyright) {
                     echo '<a href="search.php?q='.$copyright['text'].'" >(' .$copyright['type']. ') ' .$copyright['text']. '</a>';
                 }
-
-                if (isset($label)) {
-                    echo '<a href="search.php?q='.$label.'">'.$label.'</a>';
-                }
-
             echo '</div>';
 
         
@@ -183,7 +178,7 @@
 
 
 
-function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $hd_art) {
+function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $hd_art, $label) {
     echo '<div class="music-details">';
         
         echo '<div class="left-side">';
@@ -205,20 +200,25 @@ function display_album($artist, $title, $img, $year, $media_type, $spotify_id, $
                         echo '<span class="album-year">('.$year.')</h4>';
                     echo '</div>';
                 echo '<span>'.$media_type.'</span>';
+
+                if (isset($label)) {
+                    echo '<br><a class="label" href="search.php?q='.$label.'">'.$label.'</a>';
+                }
+
             echo '</div>';
 
             echo '<div style="display:flex; margin-top: 15px;">';
                 echo '<div class="album-links" style="margin: unset;">';
                     echo '<a class="btn1 platform" target="_blank" id="view-on-spotify" href="https://open.spotify.com/album/'.$spotify_id.'">Spotify</a>';
-                    echo '<a class="btn1 platform" target="_blank" id="view-on-apple" href="https://music.apple.com/us/search?term='.$artist.' - '.$title.'">Apple</a>';
+                    echo '<a class="btn1 platform" target="_blank" id="view-on-apple" href="https://music.apple.com/us/search?term='.urlencode($artist.' - '.$title).'">Apple</a>';
                     echo '<a class="btn1 platform" target="_blank" id="view-on-deezer" href="https://deezer.com/search/'.$artist.' - '.$title.'">Deezer</a>';
                     echo '<div class="platforms-gap"></div>';
-                    echo '<a class="btn1 platform" target="_blank" id="view-on-7d" href="https://us.7digital.com/search?q='.$artist.' - '.$title.'">7digital</a>';
-                    echo '<a class="btn1 platform" target="_blank" id="view-on-bp" href="https://crates.co/search?q='.$artist.' - '.$title.'">Beatport</a>';
-                    echo '<a class="btn1 platform" target="_blank" id="view-on-qb" href="https://qobuz.com/us-en/search?q='.$artist.' - '.$title.'">Qobuz</a>';
-                    echo '<a class="btn1 platform" target="_blank" id="view-on-juno" href="https://www.junodownload.com/search/?q%5Ball%5D%5B%5D='.$artist.' - '.$title.'">Juno</a>';
+                    echo '<a class="btn1 platform" target="_blank" id="view-on-7d" href="https://us.7digital.com/search?q='.urlencode($artist.' - '.$title).'">7digital</a>';
+                    echo '<a class="btn1 platform" target="_blank" id="view-on-bp" href="https://crates.co/search?q='.urlencode($artist.' - '.$title).'">Beatport</a>';
+                    echo '<a class="btn1 platform" target="_blank" id="view-on-qb" href="https://qobuz.com/us-en/search?q='.urlencode($artist.' - '.$title).'">Qobuz</a>';
+                    echo '<a class="btn1 platform" target="_blank" id="view-on-juno" href="https://www.junodownload.com/search/?q%5Ball%5D%5B%5D='.urlencode($artist.' - '.$title).'">Juno</a>';
                         echo '<div class="platforms-gap"></div>';
-                    echo '<a class="btn1 platform" target="_blank" id="view-on-dc" href="https://discogs.com/search?q='.$artist.' - '.$title.'" title="Search on Discogs" >Discogs</a>';
+                    echo '<a class="btn1 platform" target="_blank" id="view-on-dc" href="https://discogs.com/search?q='.urlencode($artist.' - '.$title).'" title="Search on Discogs" >Discogs</a>';
                 echo '</div>';
             echo '</div>';
 

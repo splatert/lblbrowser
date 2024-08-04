@@ -85,30 +85,43 @@
 
             <aside class="side-panel">
 
-                <h4>Applied filters</h4>
-                <?php
-                    if (!isset($_GET['artist']) && !isset($_GET['year'])) {
-                        echo 'none';
-                    }
-                    else {
-                        if (isset($_GET['artist'])) {
-                            echo '<span><b>Artist:</b> '.$_GET['artist'].'</span> <a onclick="deleteUrlParam(\'artist\')" style="margin-left: 5px;" class="link">Remove</a>';
+                <span class="sidepanel-cat-title">Applied filters</span>
+                <fieldset class="sidepanel-form-container">
+                    <?php
+                        if (!isset($_GET['artist']) && !isset($_GET['year'])) {
+                            echo 'none';
                         }
-                        if (isset($_GET['artist']) && isset($_GET['year'])) {
-                            echo '<br>';
+                        else {
+                            if (isset($_GET['artist'])) {
+                                echo '<span><b>Artist:</b> '.$_GET['artist'].'</span> <a onclick="deleteUrlParam(\'artist\')" style="margin-left: 5px;" class="link">Remove</a>';
+                            }
+                            if (isset($_GET['artist']) && isset($_GET['year'])) {
+                                echo '<br>';
+                            }
+                            if (isset($_GET['year'])) {
+                                echo '<span><b>Year:</b> '.$_GET['year'].'</span> <a onclick="deleteUrlParam(\'year\')" style="margin-left: 5px;" class="link">Remove</a>';
+                            }
                         }
-                        if (isset($_GET['year'])) {
-                            echo '<span><b>Year:</b> '.$_GET['year'].'</span> <a onclick="deleteUrlParam(\'year\')" style="margin-left: 5px;" class="link">Remove</a>';
-                        }
-                    }
-                ?>
+                    ?>
+                </fieldset>
 
 
-                <h4>Filters</h4>
+                <span class="sidepanel-cat-title">Filters</span>
+                <fieldset class="sidepanel-form-container">
 
-                <!-- filter by year stuff. -->
-                <label for="year">Year: </label>
-                <input type="number" min="1" max="4" name="year" value="" onkeypress="tb_change_url_param(event, 'year', this.value)">
+                    <!-- filter by year stuff. -->
+                    <label for="year">Year: </label>
+                    <input type="number" min="1" max="4" name="year" value="" onkeypress="tb_change_url_param(event, 'year', this.value)">
+
+                    <br><label for="custom-artist-field">By artist: </label>
+                    <input name="custom-artist-field" onkeypress="tb_change_url_param(event, 'artist', this.value)" type="text">
+                </fieldset>
+
+                <span class="sidepanel-cat-title">Featured artists</span>
+                <fieldset class="sidepanel-form-container">
+                    <div class="filterby-artist-list"></div>
+                </fieldset>
+
 
                 <script>
                     function tb_change_url_param(e, param, query) {
@@ -118,15 +131,7 @@
                     }
                 </script>
 
-                <br><label for="custom-artist-field">By artist: </label>
-                <input name="custom-artist-field" onkeypress="tb_change_url_param(event, 'artist', this.value)" type="text">
-
-                <!-- <br><label for="not-artist-field">Exclude artist: </label>
-                <input name="not-artist-field" onkeypress="tb_change_url_param(event, 'exclude', this.value)" type="text"> -->
-
-                <h4>Featured artists</h4>
-
-                <div class="filterby-artist-list"></div>
+                
 
 
                 <script>
@@ -243,20 +248,22 @@
 
                     echo '</div>';
 
-                    echo '<div class="album-links">';
+                    echo '<div style="display:flex; margin-top: 15px;">';
+                    echo '<div class="album-links" style="margin: unset;">';
                         echo '<a class="btn1" href="view.php?id='.$spotify_id.'&token='.$token.'" >Details</a>';
                         echo '<div class="platforms-gap"></div>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-spotify" href="https://open.spotify.com/album/'.$spotify_id.'" title="View on Spotify" >Spotify</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-apple" href="https://music.apple.com/us/search?term='.$artist.' - '.$title.'" title="Search on Apple Music" >Apple</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-deezer" href="https://deezer.com/search/'.$artist.' - '.$title.'" title="Search on Deezer" >Deezer</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-spotify" href="https://open.spotify.com/album/'.$spotify_id.'">Spotify</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-apple" href="https://music.apple.com/us/search?term='.urlencode($artist.' - '.$title).'">Apple</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-deezer" href="https://deezer.com/search/'.$artist.' - '.$title.'">Deezer</a>';
+                        echo '<div class="platforms-gap"></div>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-7d" href="https://us.7digital.com/search?q='.urlencode($artist.' - '.$title).'">7digital</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-bp" href="https://crates.co/search?q='.urlencode($artist.' - '.$title).'">Beatport</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-qb" href="https://qobuz.com/us-en/search?q='.urlencode($artist.' - '.$title).'">Qobuz</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-juno" href="https://www.junodownload.com/search/?q%5Ball%5D%5B%5D='.urlencode($artist.' - '.$title).'">Juno</a>';
                             echo '<div class="platforms-gap"></div>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-7d" href="https://us.7digital.com/search?q='.$artist.' - '.$title.'" title="Search on 7Digital" >7digital</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-bp" href="https://crates.co/search?q='.$artist.' - '.$title.'" title="Search on Beatport" >Beatport</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-qb" href="https://qobuz.com/us-en/search?q='.$artist.' - '.$title.'" title="Search on Qobuz" >Qobuz</a>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-juno" href="https://www.junodownload.com/search/?q%5Ball%5D%5B%5D='.$artist.' - '.$title.'" title="Search on JunoDownload" >Juno</a>';
-                            echo '<div class="platforms-gap"></div>';
-                        echo '<a class="btn1 platform" target="_blank" id="view-on-dc" href="https://discogs.com/search?q='.$artist.' - '.$title.'" title="Search on Discogs" >Discogs</a>';
+                        echo '<a class="btn1 platform" target="_blank" id="view-on-dc" href="https://discogs.com/search?q='.urlencode($artist.' - '.$title).'" title="Search on Discogs" >Discogs</a>';
                     echo '</div>';
+                echo '</div>';
                     
                 echo '</div>';
             echo '</div>';
