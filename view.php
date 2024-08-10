@@ -72,6 +72,7 @@
                     echo '<table class="tracklist">';
                     echo '<tbody>';
                         echo '<tr>';
+                            echo '<th>#</th>';
                             echo '<th>Artist</th>';
                             echo '<th>Track</th>';
                             echo '<th>Duration</th>';
@@ -83,6 +84,8 @@
                             echo '<th>Preview</th>';
                         echo '</tr>';
                         
+                        $tracknum = 0;
+
                         foreach ($tracks as $track) {
                             
                             $duration = date("i:s", intval($track['duration_ms'] / 1000) );
@@ -90,6 +93,10 @@
                             $track_id = $track['id'];
 
                             echo '<tr>';
+
+                                $tracknum += 1;
+                                echo '<td>'.$tracknum.'</td>';
+
                             
                                 echo '<td class="track-artists copyable">';
                                     $track_artists = $track['artists'];
