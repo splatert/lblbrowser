@@ -111,7 +111,14 @@
 
                     <!-- filter by year stuff. -->
                     <label for="year">Year: </label>
-                    <input type="number" min="1" max="4" name="year" value="" onkeypress="tb_change_url_param(event, 'year', this.value)">
+
+                    <?php
+                    $yr = '';
+                    if (isset($_GET['year'])) {
+                        $yr = $_GET['year'];
+                    }
+                    echo '<input type="number" min="1" name="year" value="'.$yr.'" onkeypress="tb_change_url_param(event, \'year\', this.value)">';
+                    ?>
 
                     <br><label for="custom-artist-field">By artist: </label>
                     <input name="custom-artist-field" onkeypress="tb_change_url_param(event, 'artist', this.value)" type="text">
