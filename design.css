@@ -1,5 +1,6 @@
 html {
-    font-size: 12px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(45deg, #101214 25%, #1c1c1c 25%, #1c1c1c 50%, #101214 50%, #101214 75%, #1c1c1c 75%, #1c1c1c 100%);
     background-size: 40.00px 40.00px;
 }
