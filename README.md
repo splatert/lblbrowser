@@ -8,7 +8,13 @@ PHP application to browse music labels on Spotify
 LblBrowser is a free PHP application that lets you browse through digital music labels that are distributed by Spotify without the need to use the Spotify web player. It can be hosted on a server or be ran locally on your computer.
 
 
-## features
+## Notice
+Audio previews are temporarily unavailable due to Spotify deprecating and disabling the API URL that returns thirty-second audio snippets.
+https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api
+
+
+
+## Features
 
 - You're not using the Spotify web player for one.
 - Simple, neat interface. Does not use any web frameworks.
