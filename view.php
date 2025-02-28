@@ -71,7 +71,7 @@
 
                     echo '<table class="tracklist">';
                     echo '<tbody>';
-                        echo '<tr>';
+                        echo '<tr height="25">';
                             echo '<th>#</th>';
                             echo '<th>Artist</th>';
                             echo '<th>Track</th>';
@@ -85,6 +85,7 @@
                         echo '</tr>';
                         
                         $tracknum = 0;
+                        $audioFailedToLoad = 0;
 
                         foreach ($tracks as $track) {
                             
@@ -92,10 +93,14 @@
                             $preview_url = $track['preview_url'];
                             $track_id = $track['id'];
 
+                            if (!$preview_url || $preview_url == '') {
+                                $audioFailedToLoad += 1;
+                            }
+
                             echo '<tr>';
 
                                 $tracknum += 1;
-                                echo '<td>'.$tracknum.'</td>';
+                                echo '<td class="track-num">'.$tracknum.'</td>';
 
                             
                                 echo '<td class="track-artists copyable">';
@@ -155,7 +160,12 @@
                                 
 
                                 echo '<td style="padding-right: unset !important">';
-                                    echo '<div class="play-btn btn2" onclick="preview(\''.$preview_url.'\', this)" >';;
+                                    if ($preview_url) {
+                                        echo '<div class="play-btn btn2" onclick="preview(\''.$preview_url.'\', this)" >';;
+                                    }
+                                    else {
+                                        echo '<div class="play-btn btn2 disabled">';
+                                    }
                                         echo '▶';
                                     echo '</div>';
                                 echo '</td>';
@@ -163,6 +173,7 @@
 
                             echo '</tr>';
                         }
+
 
                     echo '</tbody>';
                 echo '</table>';

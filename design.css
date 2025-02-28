@@ -11,6 +11,10 @@ body {
 }
 
 
+.disabled {
+    opacity: .5;
+}
+
 
 .topbar-logo {
     position: relative;
@@ -98,11 +102,25 @@ body {
 }
 
 
+.track-num {
+    font-weight: bold;
+}
+
+
+
+
+
+.track-duration {
+    text-align: center;
+}
+
+
 
 .tracklist {
     font-size: 12px;
     padding: 5px;
     background-color: #3a3a3a;
+    border: 2px solid #626262;
     color: white;
 }
 
@@ -133,9 +151,15 @@ body {
 }
 
 
+.tracklist {
+    border-collapse: collapse;
+}
+
+
 .tracklist > tbody > tr > td, .tracklist > tbody > tr > th {
     padding-right: 25px;
     padding-left: 15px;
+    border: 1px solid #2b2b2b;
 }
 
 .tracklist > tbody > tr > td:nth-child(3) {
@@ -161,8 +185,12 @@ body {
 
 
 
-.tracklist > tbody > tr > td {
-    background: linear-gradient(#7b7b7b,#585858);
+.tracklist > tbody > tr {
+    background: #3d3d3d;
+}
+
+.tracklist > tbody > tr:nth-child(2n+0) {
+    background: #585858;
 }
 
 
