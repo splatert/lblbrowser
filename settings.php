@@ -96,7 +96,7 @@
                         <legend>Interface</legend>
                         <label for="full-width">Full width page</label>
                         <input type="checkbox" name="full-width">
-                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
+                        <input type="submit" class="btn1" style="width:unset;height:unset;display:unset;" value="save">
                     </fieldset>
                 </form>
 
@@ -106,14 +106,14 @@
                         <input name="action" type="hidden" value="save-id-display">
                         <label for="show-ids">Show track barcodes/identifiers</label>
                         <input type="checkbox" name="show-ids">
-                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
+                        <input type="submit" class="btn1" style="width:unset;height:unset;display:unset;" value="save">
                     </form>
 
                     <form method="POST" action="settings.php">
                         <input name="action" type="hidden" value="save-discogs-tools">
                         <label for="show-ids">Tools for Discogs</label>
                         <input type="checkbox" name="discogs-tools">
-                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
+                        <input type="submit" class="btn1" style="width:unset;height:unset;display:unset;" value="save">
                     </form>
                     
                 </fieldset>
@@ -130,7 +130,7 @@
                         <label for="client-secret">Client Secret: </label>
                         <input id="c-secret" name="client-secret" type="password">
 
-                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
+                        <input type="submit" class="btn1" style="width:unset;height:unset;display:unset;" value="save">
                     </fieldset>
                 </form>
 
@@ -141,12 +141,12 @@
 
                         <label for="save-search-results">Save search results</label>
                         <input type="checkbox" name="save-search-results">
-                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="save">
+                        <input type="submit" class="btn1" style="width:unset;height:unset;display:unset;" value="save">
                     </form>
 
                     <form method="POST" action="settings.php">
                         <input type="hidden" name="clear-search-history" value="1">
-                        <input type="submit" class="btn2" style="width:unset;height:unset;display:unset;" value="Clear search history">
+                        <input type="submit" class="btn1" style="width:unset;height:unset;display:unset;" value="Clear search history">
                     </form>
 
                 </fieldset>

@@ -161,10 +161,10 @@
 
                                 echo '<td style="padding-right: unset !important">';
                                     if ($preview_url) {
-                                        echo '<div class="play-btn btn2" onclick="preview(\''.$preview_url.'\', this)" >';;
+                                        echo '<div class="play-btn" onclick="preview(\''.$preview_url.'\', this)" >';;
                                     }
                                     else {
-                                        echo '<div class="play-btn btn2 disabled">';
+                                        echo '<div class="play-btn disabled">';
                                     }
                                         echo '▶';
                                     echo '</div>';

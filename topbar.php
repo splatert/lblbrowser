@@ -3,7 +3,7 @@
 
 
 <div class="topbar">
-    <a href="index.php"><div class="logo-title"><b>Lbl</b>Browser</div></a>
+    <a class="topbar-logo" href="index.php"><div class="logo-title"><b>Lbl</b>Browser</div></a>
     <div class="topbar-search">
         <form method="GET" action="search.php" class="topbar-search-container">
 

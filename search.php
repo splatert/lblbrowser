@@ -284,24 +284,26 @@
             }
 
             echo '<div class="page-ctrls">';
+                echo '<div class="container">';
+                    $start = $page_num;
+                    $max = $start + 5;
 
-                $start = $page_num;
-                $max = $start + 5;
-
-                if ($start > 1) {
-                    $start = $start - 1;
-                }
-
-
-                while ($start <= $max) {
-                    if ($start == $page_num) {
-                        echo '<a class="btn2" id="curr-page" href="javascript:changeUrlParam(\'page\', '.$start.')">'.$start.'</a>';
+                    if ($start > 1) {
+                        $start = $start - 1;
                     }
-                    else {
-                        echo '<a class="btn2" href="javascript:changeUrlParam(\'page\', '.$start.')">'.$start.'</a>';
+
+
+                    while ($start <= $max) {
+                        if ($start == $page_num) {
+                            echo '<a class="btn2" id="curr-page" href="javascript:changeUrlParam(\'page\', '.$start.')">'.$start.'</a>';
+                        }
+                        else {
+                            echo '<a class="btn2" href="javascript:changeUrlParam(\'page\', '.$start.')">'.$start.'</a>';
+                        }
+                        $start += 1;
                     }
-                    $start += 1;
-                }
+
+                echo '</div>';
             echo '</div>';
         }
 

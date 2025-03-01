@@ -1,13 +1,14 @@
 html {
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(45deg, #101214 25%, #1c1c1c 25%, #1c1c1c 50%, #101214 50%, #101214 75%, #1c1c1c 75%, #1c1c1c 100%);
+    background: #f2f2f2;
     background-size: 40.00px 40.00px;
 }
 
 body {
     margin: auto;
     max-width: 75%;
+    box-shadow: 0px 10px 10px #00000038;
 }
 
 
@@ -17,8 +18,11 @@ body {
 
 
 .topbar-logo {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px;
     position: relative;
-    top: 5px;
+    bottom: 2px;
 }
 
 
@@ -26,11 +30,12 @@ body {
 .topbar-search-container {
     background: white;
     max-height: 25px;
+    border: 2px solid gainsboro;
 }
 
 
 .topbar-links > a {
-    line-height: 2.5;
+    line-height: 2;
 }
 
 
@@ -114,17 +119,6 @@ body {
     text-align: center;
 }
 
-
-
-.tracklist {
-    font-size: 12px;
-    padding: 5px;
-    background-color: #3a3a3a;
-    border: 2px solid #626262;
-    color: white;
-}
-
-
 .tracklist-container, .sidepanel-form-container {
     margin-top: 15px;
     background: linear-gradient(#f2f2f2,white);
@@ -153,13 +147,14 @@ body {
 
 .tracklist {
     border-collapse: collapse;
+    font-size: 12px;
+    color: black;
 }
 
 
 .tracklist > tbody > tr > td, .tracklist > tbody > tr > th {
     padding-right: 25px;
     padding-left: 15px;
-    border: 1px solid #2b2b2b;
 }
 
 .tracklist > tbody > tr > td:nth-child(3) {
@@ -171,6 +166,12 @@ body {
 .play-btn {
     cursor: pointer;
     margin-left: 15px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 25px;
+    line-height: 2;
 }
 
 
@@ -186,21 +187,12 @@ body {
 
 
 .tracklist > tbody > tr {
-    background: #3d3d3d;
+    background: #e6e6e6;
+    border-bottom: 1px solid gray;
 }
 
 .tracklist > tbody > tr:nth-child(2n+0) {
-    background: #585858;
-}
-
-
-
-.tracklist > tbody > tr > th {
-    background-image: url('img/ui/material.png');
-    background-size: contain;
-    background-repeat: repeat-x;
-    box-shadow: 0px 1px 3px #00000050;
-
+    background: #f5f5f5;
 }
 
 
@@ -304,17 +296,12 @@ input[name="custom-artist-field"] {
 
 
 .btn1 {
-    background: linear-gradient(white, #c6c6c6);
-    border: 1px solid;
-      border-top-color: currentcolor;
-      border-right-color: currentcolor;
-      border-bottom-color: currentcolor;
-      border-left-color: currentcolor;
+    background: linear-gradient(rgb(255, 255, 255) 0%, rgb(241, 241, 241) 50%, rgb(225, 225, 225) 51%, rgb(246, 246, 246) 100%);
+    border: 1px solid gainsboro;
     border-radius: 3px;
     color: black;
     cursor: pointer;
-    box-shadow: 0px 1px 2px #000000d9;
-    border-color: #d5d5d5;
+    box-shadow: 1px 1px 0px #7e7e7e;
 }
 
 
@@ -458,25 +445,13 @@ input[name="custom-artist-field"] {
 
 
 .btn2 {
-    margin-right: 10px;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    width: 25px;
-    height: 25px;
-    line-height: 2;
-    background: linear-gradient(whitesmoke,#ececec, #b7b7b7);
-    box-shadow: 0px 1px 2px #000000c2;
-    border: 1px solid #d7d7d7;
-    border-radius: 3px;
+    border: 1px solid #c2c2c2;
+    background: white;
 }
 
 
 .btn2:hover {
-    background: linear-gradient(rgb(255, 255, 255), rgb(204,228,255), rgb(116,198,255));
-    border-color: rgb(116,180,255);
-    box-shadow: 0px 0px 0px 1px rgb(33, 96, 178);
+    border-color: black;
 }
 
 
@@ -513,13 +488,16 @@ input[name="custom-artist-field"] {
 }
 
 
-.page-ctrls {
+.page-ctrls > .container {
     display: flex;
     margin-top: 5px;
     padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
 }
 
-.page-ctrls > a {
+.page-ctrls > .container > a {
     margin-right: 10px;
     color: black;
     text-align: center;
@@ -537,7 +515,7 @@ input[name="custom-artist-field"] {
 
 
 .logo-title {
-    color: white;
+    color: black;
 }
 
 
@@ -546,7 +524,7 @@ input[name="custom-artist-field"] {
     background-image: url('img/logo.png');
     background-size: contain;
     background-repeat: no-repeat;
-    padding: 20px;
+    padding: 15px;
     position: relative;
     top: 5px;
     margin-right: 5px;  
@@ -575,7 +553,6 @@ input[name="custom-artist-field"] {
 
 .topbar-search > form {
     margin: unset;
-    padding: 5px;
 }
 
 .topbar-links {
@@ -586,19 +563,21 @@ input[name="custom-artist-field"] {
     text-decoration: none;
     padding-right: 15px;
     font-weight: bold;
-    color: lightgray
+    color: gray
 }
 
 .topbar-links > a:hover {
-    color: white;
+    color: black;
 }
 
 
 .topbar {
     display: flex;
-    background: linear-gradient(#424242,#151515);
-    padding: 10px;
+    background: linear-gradient(white, #f2f2f2);
     line-height: 1.75;
+    border-bottom: 2px solid gainsboro;
+    padding-left: 15px;
+    padding-top: 10px;
 }
 
 
