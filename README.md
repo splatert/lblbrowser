@@ -1,6 +1,13 @@
 
 <img src="https://github.com/splatert/lblbrowser/assets/82643571/ab4ea7a8-5307-48f6-877d-e07b0e443196" height="75">
 
+
+## Notice
+As of February 2026, Spotify has made changes to their web API that now **require a Premium Spotify account** in order to access it.
+This, unfortunately, means that users who aren't subscribed to Premium won't be able to use this program (unless I attempt at moving away from spotify to another service with similar features.).
+We're sorry.
+
+
 # lblbrowser
 PHP application to browse music labels on Spotify
 
@@ -8,7 +15,7 @@ PHP application to browse music labels on Spotify
 LblBrowser is a free PHP application that lets you browse through digital music labels that are distributed by Spotify without the need to use the Spotify web player. It can be hosted on a server or be ran locally on your computer.
 
 
-## Notice
+## Regarding audio previews [Feb 2025]
 Audio previews are temporarily unavailable due to Spotify deprecating and disabling the API URL that returns thirty-second audio snippets.
 https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api
 
